@@ -1,0 +1,8 @@
+#! /usr/bin/env sh
+
+./pre_install
+
+stow default
+[[ "$OSTYPE" == "darwin"* ]] && stow macos
+
+./post_install

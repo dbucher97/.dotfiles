@@ -1,0 +1,2 @@
+export PATH="$PATH:/Users/david/projects/flutter/bin/"
+alias flutterrun="flutter run --pid-file $HOME/.local/share/flutter.pid"

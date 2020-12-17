@@ -1,0 +1,14 @@
+#! /usr/bin/env sh
+
+# script that runs after stow default
+
+# Install vim plug
+echo "Installing vim-plug..."
+curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# Install zsh antigen
+echo "Installing antigen..."
+curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/zsh/antigen.zsh --create-dirs \
+       git.io/antigen
+
+echo "Done."
