@@ -1,8 +1,0 @@
-#! /usr/bin/env sh
-
-# move profile to local profile
-if [ -f ~/.profile ]; then
-  echo "Moving .profile to .local_profile."
-  cat ~/.profile >> ~/.local_profile
-  rm ~/.profile
-fi

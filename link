@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+
+[ -e ${HOME}/$1 ] && [ -L ${HOME}/$1 ] && rm ${HOME}/$1 
+ln -s ${PWD}/home/$1 ${HOME}/$1

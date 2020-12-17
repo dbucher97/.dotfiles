@@ -1,6 +1,6 @@
 # .dotfiles
 
-My extensible `.dotfiles` repo built on GNU stow.
+My extensible `.dotfiles` repo built on GNU Makefiles.
 
 ## Usage
 
@@ -17,12 +17,12 @@ This basically calls
 ```
 ./pre_install
 
-stow default
+make default
 
 ./post_install
 ```
 
-If MacOS is detected also stow macos.
+If MacOS is detected also `make macos`.
 
 To save all settings in `.profile` the script `pre_install` moves it to
 `.local_profile` which gets sourced by the new `.profile` from default.
