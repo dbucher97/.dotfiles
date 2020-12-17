@@ -10,7 +10,7 @@ endif
 
 pre :
 	@echo "Pre Install"
-	@if [[ -f ${HOME}/.profile ]]; then mv ${HOME}/.profile ${HOME}/.local_profile; fi
+	@if [ -f ${HOME}/.profile ] && [ ! -L ${HOME}/.profile ]; then mv ${HOME}/.profile ${HOME}/.local_profile; fi
 
 post :
 	@echo "Post Install"
