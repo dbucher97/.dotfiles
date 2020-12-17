@@ -1,7 +1,3 @@
-# Use the GNU coreutils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-
 # Use antigen as zsh plugin manager
 source ~/.local/share/zsh/antigen.zsh
 

@@ -1,0 +1,15 @@
+{
+    "snippets.userSnippetsDirectory": "~/.config/nvim/snippets/",
+    "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "javascriptreact", "java", "python"],
+    "diagnostic.errorSign": "🤬",
+    "diagnostic.warningSign": "⚠️",
+    "diagnostic.hintSign": "💡",
+    "diagnostic.infoSign": "❔",
+    "prettier.printWidth": 109,
+    "prettier.trailingComma": "all",
+    "prettier.singleQuote": true,
+    "javascript.suggest.enabled": false,
+    "clangd.enabled": false,
+    "clangd.semanticHighlighting": true,
+    "clangd.arguments": ["--background-index"]
+}
