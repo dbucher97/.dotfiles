@@ -12,7 +12,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
-Plug 'drewtempelmeyer/palenight.vim'
+" Plug 'drewtempelmeyer/palenight.vim'
+Plug 'morhetz/gruvbox'
 Plug 'benmills/vimux'
 Plug 'jiangmiao/auto-pairs'
 Plug 'farmergreg/vim-lastplace'
@@ -41,7 +42,7 @@ set termguicolors
 syntax enable
 set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme palenight
+colorscheme gruvbox
 " let g:palenight_terminal_italics=1
 hi Normal guibg=none ctermbg=none
 hi LineNr guibg=none ctermbg=none
@@ -69,8 +70,8 @@ set listchars+=tab:>\       " display vertical lines in indentaions.
 set listchars+=trail:•      " mark trailing whitespaces.
 set hidden                  " allow buffer to be hidden without save.
 set showmatch               " show matching brackets.
-set textwidth=78            " max text width.
-set colorcolumn=79          " display colorcolumn
+set textwidth=79            " max text width.
+set colorcolumn=80          " display colorcolumn
 set nojoinspaces            " don't autoinsert two spaces when joining lines with '.'
 set formatoptions+=j        " remove comment character when joining lines.
 set formatoptions+=n        " indent numbered lists.
@@ -112,7 +113,7 @@ highlight GitGutterDelete guifg=#D25252 guibg=none ctermfg=1 ctermbg=none
 highlight GitGutterChangeDelete guifg=#C792EA guibg=none ctermfg=1 ctermbg=none
 
 " Airline
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " Matlab Filetype
 au! BufRead,BufNewFile *.m set ft=matlab
@@ -180,11 +181,6 @@ let g:header_auto_add_header = 0
 let g:header_field_author = 'David Bucher'
 let g:header_field_author_email = 'David.Bucher@physik.lmu.de'
 let g:header_field_copyright = 'David Bucher'
-let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.cpp let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.hpp let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.h let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.c let g:header_cfg_comment_char = '//'
 
 "=== MAPPINGS ===
 " --- git ---
