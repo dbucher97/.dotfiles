@@ -15,7 +15,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle ael-code/zsh-colored-man-pages
-antigen bundle thewtex/tmux-mem-cpu-load
 
 # Load the theme.
 antigen theme wezm
