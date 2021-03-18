@@ -1,16 +1,19 @@
 # Alacritty Config
+# for german MacOs Keymap
+alt_send_esc: false
+# Window configs.
 window:
   dimensions:
-   columns: 120
-   lines: 38
+    columns: 120
+    lines: 38
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 6
-   y: 6
+    x: 6
+    y: 6
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -68,33 +71,33 @@ font:
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '0x1d2021'
-    background: '0x282828'
+    # hard contrast:
+    background: '0x1d2021'
+    # medium contrast: background: '0x282828'
     # soft contrast: background = '0x32302f'
     foreground: '0xebdbb2'
 
   # Normal colors
   normal:
-    black:   '0x282828'
-    red:     '0xcc241d'
-    green:   '0x98971a'
-    yellow:  '0xd79921'
-    blue:    '0x458588'
+    black: '0x282828'
+    red: '0xcc241d'
+    green: '0x98971a'
+    yellow: '0xd79921'
+    blue: '0x458588'
     magenta: '0xb16286'
-    cyan:    '0x689d6a'
-    white:   '0xa89984'
+    cyan: '0x689d6a'
+    white: '0xa89984'
 
   # Bright colors
   bright:
-    black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
+    black: '0x928374'
+    red: '0xfb4934'
+    green: '0xb8bb26'
+    yellow: '0xfabd2f'
+    blue: '0x83a598'
     magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
-
+    cyan: '0x8ec07c'
+    white: '0xebdbb2'
 
 # Background opacity
 #
@@ -102,14 +105,14 @@ colors:
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 0.95
 
-
 cursor:
   unfocused_hollow: true
 
 live_config_reload: true
 
 mouse:
-  hide_when_typing: true
+  hide_when_typing:
+    true
 
     # URL modifiers
     #
@@ -120,12 +123,31 @@ mouse:
     # http://www.google.com
 
 key_bindings:
-  - { key: Period,         mods: Command,                    action: ResetFontSize    }
-  - { key: Plus,           mods: Command,                    action: IncreaseFontSize }
-  - { key: Minus,          mods: Command,                    action: DecreaseFontSize }
-  - { key: H,              mods: Command,                    action: Hide             }
-  - { key: M,              mods: Command,                    action: Minimize         }
-  - { key: Q,              mods: Command,                    action: Quit             }
-  - { key: W,              mods: Command,                    action: Quit             }
-  - { key: N,              mods: Command,                    action: SpawnNewInstance }
-  - { key: F,              mods: Command,                    action: ToggleFullscreen }
+  - { key: Period, mods: Command, action: ResetFontSize }
+  - { key: Plus, mods: Command, action: IncreaseFontSize }
+  - { key: Minus, mods: Command, action: DecreaseFontSize }
+  # - { key: H, mods: Command, action: Hide }
+  - { key: M, mods: Command, action: Minimize }
+  - { key: Q, mods: Command, action: Quit }
+  - { key: W, mods: Command, action: Quit }
+  - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: F, mods: Command, action: ToggleFullscreen }
+  - { key: Key1, mods: Control, chars: "\x021" }
+  - { key: Key2, mods: Control, chars: "\x022" }
+  - { key: Key3, mods: Control, chars: "\x023" }
+  - { key: Key4, mods: Control, chars: "\x024" }
+  - { key: Key5, mods: Control, chars: "\x025" }
+  - { key: Key6, mods: Control, chars: "\x026" }
+  - { key: Key7, mods: Control, chars: "\x027" }
+  - { key: Key8, mods: Control, chars: "\x028" }
+  - { key: Key9, mods: Control, chars: "\x029" }
+  - { key: Key0, mods: Control, chars: "\x0210" }
+  - { key: Return, mods: Control, chars: "\x02c" }
+  - { key: Return, mods: Command, chars: "\x02%" }
+  - { key: Tab, mods: Control, chars: "\x02g" }
+  - { key: Tab, mods: Control|Shift, chars: "\x02L" }
+  - { key: H, mods: Command, chars: "\x02h" }
+  - { key: J, mods: Command, chars: "\x02j" }
+  - { key: K, mods: Command, chars: "\x02k" }
+  - { key: L, mods: Command, chars: "\x02l" }
+  - { key: Q, mods: Control, chars: "\x02x" }
