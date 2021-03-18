@@ -17,4 +17,4 @@ export EDITOR=nvim
 [ -f ~/.local_profile ] && source ~/.local_profile
 [ -f ~/.mac_profile ] && source ~/.mac_profile
 [ -f ~/.flutter_profile ] && source ~/.flutter_profile
-
+:
