@@ -22,6 +22,7 @@ basic :
 	./link .profile
 	./link .gitconfig
 	./link .zshrc
+	./link .config/alacritty
 	./link .config/nvim
 
 macos :

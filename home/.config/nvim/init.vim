@@ -5,19 +5,24 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
-Plug 'drewtempelmeyer/palenight.vim'
+" Plug 'drewtempelmeyer/palenight.vim'
+Plug 'morhetz/gruvbox'
 Plug 'benmills/vimux'
 Plug 'jiangmiao/auto-pairs'
 Plug 'farmergreg/vim-lastplace'
 Plug 'alpertuna/vim-header'
 Plug 'christoomey/vim-tmux-navigator'
+" Plug 'melonmanchan/vim-tmux-resizer'
+Plug 'RyanMillerC/better-vim-tmux-resizer'
 Plug 'ddrscott/vim-side-search'
 
 Plug 'vim-airline/vim-airline'
@@ -28,8 +33,9 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'bfrg/vim-cpp-modern'
 " Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
+Plug 'derekwyatt/vim-fswitch'
 
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 
 " Plug 'sheerun/vim-polyglot'
 
@@ -41,7 +47,7 @@ set termguicolors
 syntax enable
 set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme palenight
+colorscheme gruvbox
 " let g:palenight_terminal_italics=1
 hi Normal guibg=none ctermbg=none
 hi LineNr guibg=none ctermbg=none
@@ -69,8 +75,8 @@ set listchars+=tab:>\       " display vertical lines in indentaions.
 set listchars+=trail:•      " mark trailing whitespaces.
 set hidden                  " allow buffer to be hidden without save.
 set showmatch               " show matching brackets.
-set textwidth=78            " max text width.
-set colorcolumn=79          " display colorcolumn
+set textwidth=79            " max text width.
+set colorcolumn=80          " display colorcolumn
 set nojoinspaces            " don't autoinsert two spaces when joining lines with '.'
 set formatoptions+=j        " remove comment character when joining lines.
 set formatoptions+=n        " indent numbered lists.
@@ -83,6 +89,9 @@ set mouse=a                 " enable mouse support
 set scl=yes:1               " always show sign column on left
 set splitbelow
 set splitright
+
+" set t_ZH=3m
+" set t_ZR=23m
 
 " --- Help --- "
 command -nargs=* -complete=help Help vertical belowright help <args> 
@@ -100,19 +109,22 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
+let g:NERDCustomDelimiters = {
+    \ 'dosini': { 'left': '#'}
+\ }
 
 " GitGutter
-let g:gitgutter_sign_added = "▌"
-let g:gitgutter_sign_removed = "▌"
-let g:gitgutter_sign_modified = "▌"
-let g:gitgutter_sign_modified_removed = "▌"
-highlight GitGutterAdd    guifg=#C3E872 guibg=none ctermfg=2 ctermbg=none
-highlight GitGutterChange guifg=#82AAFF guibg=none ctermfg=3 ctermbg=none
-highlight GitGutterDelete guifg=#D25252 guibg=none ctermfg=1 ctermbg=none
-highlight GitGutterChangeDelete guifg=#C792EA guibg=none ctermfg=1 ctermbg=none
+let g:gitgutter_sign_added = "▎"
+let g:gitgutter_sign_removed = "▎"
+let g:gitgutter_sign_modified = "▎"
+let g:gitgutter_sign_modified_removed = "▎"
+highlight GitGutterAdd    guifg=#B8BB26 guibg=none ctermfg=2 ctermbg=none
+highlight GitGutterChange guifg=#83A598 guibg=none ctermfg=3 ctermbg=none
+highlight GitGutterDelete guifg=#FB4934 guibg=none ctermfg=1 ctermbg=none
+highlight GitGutterChangeDelete guifg=#D3869B guibg=none ctermfg=1 ctermbg=none
 
 " Airline
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " Matlab Filetype
 au! BufRead,BufNewFile *.m set ft=matlab
@@ -133,6 +145,7 @@ let g:AutoPairsShortcutFastWrap = '<C-e>'
 let g:AutoPairsShortcutJump= '<C-c>'
 
 " Coc.nvim
+if has_key(plugs, "coc.nvim")
 set hidden
 set nobackup
 set nowritebackup
@@ -170,6 +183,7 @@ set ph=10
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+endif
 
 " Clang-format
 let g:clang_format#command = '/usr/local/opt/llvm/bin/clang-format'
@@ -180,11 +194,6 @@ let g:header_auto_add_header = 0
 let g:header_field_author = 'David Bucher'
 let g:header_field_author_email = 'David.Bucher@physik.lmu.de'
 let g:header_field_copyright = 'David Bucher'
-let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.cpp let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.hpp let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.h let g:header_cfg_comment_char = '//'
-au BufRead,BufNewFile *.c let g:header_cfg_comment_char = '//'
 
 "=== MAPPINGS ===
 " --- git ---
@@ -228,7 +237,6 @@ xmap <leader>a <Plug>(EasyAlign)
 
 " --- NERDTree ---
 nnoremap <silent> <tab> :NERDTreeToggle<CR>
-nnoremap <silent> <leader>tr :NERDTreeFind<CR>
 
 " --- spell checking ---
 noremap <Leader>tse :set spell! spelllang=en<CR>:echo 'Toggled en spell check'<CR>
@@ -241,16 +249,31 @@ tnoremap <Esc> <C-\><C-n>
 
 augroup scriptbindings
   autocmd! scriptbindings
-  au Filetype python,sh nnoremap <silent> <leader>r :call VimuxRunCommand("clear; ./" . bufname("%"))<CR>
+  au BufNewFile,BufRead *.py,*.sh nnoremap <silent> <leader>r :call VimuxRunCommand("run-script " . bufname("%"))<CR>
 augroup end
 
 augroup cppbindings
   autocmd! cppbindings
-  au Filetype cpp nnoremap <silent> <leader>r :call VimuxRunCommand("compile")<CR>
-  au Filetype cpp nnoremap <silent> <leader>R :call VimuxRunCommand("compile -c")<CR>
+  au BufNewFile,BufRead *.cpp,*.hpp nnoremap <silent> <leader>r :call VimuxRunCommand("compile")<CR>
+  au BufNewFile,BufRead *.cpp,*.hpp nnoremap <silent> <leader>R :call VimuxRunCommand("compile -c")<CR>
+  au BufNewFile,BufRead *.cpp nnoremap <silent> <leader>c :FSRight<CR>
+  au BufNewFile,BufRead *.hpp nnoremap <silent> <leader>c :FSLeft<CR>
 augroup end
 
-nnoremap <silent> <leader>r :call VimuxRunCommand("clear; ./" . bufname("%"))<CR>
+if has_key(plugs, "coc.nvim")
+augroup latexbindings
+  autocmd! latexbindings
+  au BufNewFile,BufRead *.tex,*.sty nnoremap <silent> <leader>r :CocCommand latex.Build<CR>
+  au BufNewFile,BufRead *.tex,*.sty nnoremap <silent> <leader>v :CocCommand latex.ForwardSearch<CR>
+augroup end
+endif
+
+" augroup cppbindings
+"   autocmd! cppbindings
+"   au BufNewFile,BufRead *.ini nnoremap <silent> <leader>r :call VimuxRunCommand("run_mlgen -f -p show ". bufname("%"))<CR>
+" augroup end
+
+" nnoremap <silent> <leader>r :call VimuxRunCommand("clear; ./" . bufname("%"))<CR>
 nnoremap <Leader>vi :VimuxInspectRunner<CR>
 nnoremap <Leader>vq :VimuxCloseRunner<CR>
 nnoremap <Leader>vs :VimuxInterruptRunner<CR>
