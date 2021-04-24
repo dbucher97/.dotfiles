@@ -14,12 +14,15 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
+"
 " Plug 'drewtempelmeyer/palenight.vim'
 Plug 'morhetz/gruvbox'
+" Plug 'folke/tokyonight.nvim'
+
 Plug 'benmills/vimux'
 Plug 'jiangmiao/auto-pairs'
 Plug 'farmergreg/vim-lastplace'
-Plug 'alpertuna/vim-header'
+" Plug 'alpertuna/vim-header'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'melonmanchan/vim-tmux-resizer'
 Plug 'RyanMillerC/better-vim-tmux-resizer'
@@ -29,31 +32,48 @@ Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim' 
 " Languages
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'klimeryk/vim-monkey-c'
 " Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'derekwyatt/vim-fswitch'
 
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'antoyo/vim-licenses'
+
 " Plug 'lervag/vimtex'
 
 " Plug 'sheerun/vim-polyglot'
-
+"
+" LUA STUFF
+" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " === Settings ===
 " --- Colorschemes ---
 set termguicolors
 syntax enable
-set background=dark
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set background=dark
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme gruvbox
+" let g:tokyonight_style = "night"
 " let g:palenight_terminal_italics=1
 hi Normal guibg=none ctermbg=none
 hi LineNr guibg=none ctermbg=none
 hi SignColumn guibg=none ctermbg=none
 " hi CursorLineNr guibg=none ctermbg=none
-hi Comment cterm=italic gui=italic
+" hi Comment cterm=italic gui=italic
+
+" Goyo fix background color
+function! s:goyo_leave()
+  hi Normal guibg=none ctermbg=none
+  hi LineNr guibg=none ctermbg=none
+  hi SignColumn guibg=none ctermbg=none
+endfunction
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " " --- Leader Key ---
 let mapleader = ' '
@@ -90,6 +110,9 @@ set scl=yes:1               " always show sign column on left
 set splitbelow
 set splitright
 
+" Add spell for latex and markdown files
+autocmd FileType markdown,latex setlocal spell
+
 " set t_ZH=3m
 " set t_ZR=23m
 
@@ -110,7 +133,8 @@ let g:NERDCompactSexyComs = 1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCustomDelimiters = {
-    \ 'dosini': { 'left': '#'}
+    \ 'dosini': { 'left': '#'},
+    \ 'monkey-c': { 'left': '//' }
 \ }
 
 " GitGutter
@@ -135,6 +159,7 @@ au! BufWritePost *.dart silent !pkill -SIGUSR1 -F ~/.local/share/flutter.pid
 " Vimux
 let g:VimuxHeight = "20"
 let g:VimuxOrientation = "v"
+" let g:VimuxRunnerType = "window"
 
 " VimTeX
 let g:tex_flavor = "latex"
@@ -182,18 +207,15 @@ endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 endif
 
 " Clang-format
 let g:clang_format#command = '/usr/local/opt/llvm/bin/clang-format'
 let g:clang_format#auto_format = 1
 
-" Vim Header
-let g:header_auto_add_header = 0
-let g:header_field_author = 'David Bucher'
-let g:header_field_author_email = 'David.Bucher@physik.lmu.de'
-let g:header_field_copyright = 'David Bucher'
+" Vim License
+let g:licenses_copyright_holders_name = 'David Bucher <David.Bucher@physik.lmu.de>'
 
 "=== MAPPINGS ===
 " --- git ---
@@ -237,6 +259,7 @@ xmap <leader>a <Plug>(EasyAlign)
 
 " --- NERDTree ---
 nnoremap <silent> <tab> :NERDTreeToggle<CR>
+nnoremap <silent> <leader>tr :NERDTreeFocus<CR>
 
 " --- spell checking ---
 noremap <Leader>tse :set spell! spelllang=en<CR>:echo 'Toggled en spell check'<CR>
@@ -277,3 +300,6 @@ endif
 nnoremap <Leader>vi :VimuxInspectRunner<CR>
 nnoremap <Leader>vq :VimuxCloseRunner<CR>
 nnoremap <Leader>vs :VimuxInterruptRunner<CR>
+
+" DoxygenToolkit
+nnoremap <Leader>d :Dox<CR>
