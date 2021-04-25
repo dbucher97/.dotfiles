@@ -88,9 +88,9 @@ g.nvim_tree_auto_open = 1
 
 
 -- indent line
-g.indentLine_char = '|'
-g.indentLine_showFirstIndentLevel = 1
-g.indentLine_fileTypeExclude = {'help', 'terminal'}
+-- g.indentLine_char = '|'
+-- g.indentLine_showFirstIndentLevel = 1
+-- g.indentLine_fileTypeExclude = {'help', 'terminal'}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = true
 g.indent_blankline_use_treesitter = true

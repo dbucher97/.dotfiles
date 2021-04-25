@@ -30,7 +30,6 @@ return require('packer').startup(function()
   use 'hoob3rt/lualine.nvim'
 
   -- Indent Line
-  use 'Yggdroot/indentLine'
   use {'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
 
   -- Vista Sidebar
