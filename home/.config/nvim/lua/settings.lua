@@ -51,10 +51,15 @@ opt('o', 'background', 'dark')
 
 
 -- colorscheme options
-g.tokyonight_style = "night"
+-- TokyoNight
+--[[ g.tokyonight_style = "night"
 g.tokyonight_italic_functions = true
 g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer", "NvimTree" }
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme tokyonight]] --]]
+
+-- Material
+vim.g.material_style = "deep ocean"
+require('material').set()
 
 -- treesitter setup
 require('nvim-treesitter.configs').setup{
@@ -62,23 +67,21 @@ require('nvim-treesitter.configs').setup{
   highlight = {
     enable = true,
   },
-  indent = {
+  --[[ indent = {
     enable = true,
-  },
+  }, ]]
 
 }
 
 -- lualine
-require('lualine').setup {
+require('lualine').setup()
+--[[ require('lualine').setup {
   options = {
-    theme = 'tokyonight',
+    -- theme = 'material-nvim',
     section_separators = '',
     component_separators = '',
   },
-  sections = {
-    lualine_x = {'filetype'},
-  }
-}
+} ]]
 
 -- nvim-tree
 g.nvim_tree_ignore = { '.git', 'node_modules', '.cache' }

@@ -15,7 +15,8 @@ return require('packer').startup(function()
   -- UI
 
   -- Colorscheme
-  use 'folke/tokyonight.nvim'
+  -- use 'folke/tokyonight.nvim'
+  use 'marko-cerovac/material.nvim'
 
   -- NvimTree as File explorer
   use 'kyazdani42/nvim-tree.lua'
